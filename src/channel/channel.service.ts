@@ -15,7 +15,13 @@ export class ChannelService {
   ) {}
   public async create(data: channel) {
     var channel = await this.channelModel.create(data);
-    this.sentchannelMail(channel);
+    this.sentchannelstatusMail(channel);
+    this.sentchannelstatusMail(channel);
+    this.sentchannelupdateMail(channel);
+    this.sentchannelnotifyMail(channel);
+    this.sentchannelverifyMail(channel);
+    this.sentchannelrecommenedMail(channel);
+    this.sentchannelratingMail(channel);
     return {
       response_code: HttpStatus.OK,
       response_data: channel,
@@ -44,7 +50,20 @@ export class ChannelService {
       response_data: channel,
     };
   }
-
+  public async findvideo(id: string) {
+    var channel = await this.channelModel.find({ video: id }).populate('video');
+    return {
+      response_code: HttpStatus.OK,
+      response_data: channel,
+    };
+  }
+  public async findcatogery(id: string) {
+    var channel = await this.channelModel.find({ catogery: id }).populate('catogery');
+    return {
+      response_code: HttpStatus.OK,
+      response_data: channel,
+    };
+  }
   public async update(id: string, data: channel) {
     var channel = await this.channelModel.findByIdAndUpdate(id, channel);
     return {
@@ -60,8 +79,52 @@ export class ChannelService {
       response_data: channel,
     };
   }
-  public async sentchannelMail(channel): Promise<CommonResponseModel> {
-    let res = await this.utilsService.sentchannelMail(channel);
+  public async sentchannelstatusMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelstatusMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelblockMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelblockMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelupdateMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelupdateMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelnotifyMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelnotifyMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelverifyMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelverifyMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelrecommenedMail(
+    channel,
+  ): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelrecommenedMail(channel);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sentchannelratingMail(channel): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentchannelratingMail(channel);
     return {
       response_code: HttpStatus.OK,
       response_data: res,

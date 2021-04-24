@@ -462,7 +462,7 @@ export class UploadService {
     let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
     let html_body = await ejs.render(templateHtml, myMessage);
     const msg = {
-      to: 'dhasmanadhasmana12@gmail.com',
+      to: 'mailtohash23935@gmail.com',
       from: process.env.SendGrid_from,
       subject: 'New Comments Created',
       text: 'New Comments Created',
@@ -492,7 +492,7 @@ export class UploadService {
     const response = await sgMail.send(msg);
     return response;
   }
-  public async sentchannelMail(channel) {
+  public async sentchannelstatusMail(channel) {
     var myMessage = {
       name: channel.name,
       cover_photo: channel.cover_photo,
@@ -502,15 +502,167 @@ export class UploadService {
       create: channel.create,
       strike: channel.strike,
     };
-    let templatePath = `${appRoot.path}/components/channel_invoice.ejs`;
+    let templatePath = `${appRoot.path}/components/channelstatus_invoice.ejs`;
     let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
     let html_body = await ejs.render(templateHtml, myMessage);
 
     const msg = {
-      to: 'mailtodhasmanadhasmana12@gmail.com',
+      to: 'mailtohash23935@gmail.com',
       from: process.env.SendGrid_from,
-      subject: 'New Payment Created',
-      text: 'New Pyment Done',
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelblockMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channelblock_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelupdateMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channelupdate_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelnotifyMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channelnotify_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelverifyMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channelverify_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelrecommenedMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${
+      appRoot.path
+    }/components/channelrecommened_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentchannelratingMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channelrating_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
       html: html_body,
     };
 

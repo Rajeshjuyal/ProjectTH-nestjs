@@ -4,6 +4,10 @@ export const channelSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Users',
   },
+  catogery: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'catogery',
+  },
   name: { type: String, required: true },
   cover_photo: { type: String, required: true },
   category: { type: String, required: true },
@@ -11,14 +15,17 @@ export const channelSchema = new mongoose.Schema({
   subscriber: { type: String, required: true },
   create: { type: String, required: true },
   strike: { type: String, required: true },
+  video: { type: mongoose.Schema.Types.ObjectId, ref: 'video', required: true },
 });
 export interface channel {
   user: string;
+  catogery: string;
   name: string;
   cover_photo: string;
-  catogery: string;
+  category: string;
   description: string;
   subscription: string;
-  created: string;
+  create: string;
   strike: string;
+  video: string;
 }

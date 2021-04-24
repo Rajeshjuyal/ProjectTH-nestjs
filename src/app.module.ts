@@ -20,6 +20,7 @@ import { SubscriptionModule } from './subscription/subscription.module';
 import { CommentsModule } from './comments/comments.module';
 import { PaymentModule } from './payment/payment.module';
 import { ChannelModule } from './channel/channel.module';
+import { CatogeryModule } from './catogery/catogery.module';
 
 @Global()
 @Module({
@@ -57,6 +58,7 @@ import { ChannelModule } from './channel/channel.module';
     CommentsModule,
     PaymentModule,
     ChannelModule,
+    CatogeryModule,
   ],
   controllers: [],
   providers: [AppGateway],

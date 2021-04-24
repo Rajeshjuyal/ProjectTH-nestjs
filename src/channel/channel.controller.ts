@@ -32,6 +32,14 @@ export class ChannelController {
   findusers(@Body() id: string) {
     return this.channelService.finduser(id);
   }
+  @Get('byvideo/:id')
+  findvideo(@Body() id: string) {
+    return this.channelService.findvideo(id);
+  }
+  @Get('bycatogery/:id')
+  findcatogery(@Body() id: string) {
+    return this.channelService.findcatogery(id);
+  }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() data: channel) {
