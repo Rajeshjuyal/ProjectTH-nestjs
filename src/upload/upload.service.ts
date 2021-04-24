@@ -492,4 +492,29 @@ export class UploadService {
     const response = await sgMail.send(msg);
     return response;
   }
+  public async sentchannelMail(channel) {
+    var myMessage = {
+      name: channel.name,
+      cover_photo: channel.cover_photo,
+      category: channel.catogery,
+      description: channel.description,
+      subscriber: channel.subscriber,
+      create: channel.create,
+      strike: channel.strike,
+    };
+    let templatePath = `${appRoot.path}/components/channel_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'mailtodhasmanadhasmana12@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Payment Created',
+      text: 'New Pyment Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
 }
