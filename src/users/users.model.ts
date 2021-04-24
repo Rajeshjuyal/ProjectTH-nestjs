@@ -29,9 +29,9 @@ export const UsersSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-        trim: true,
-        lowercase: true,
-        unique: true,
+      trim: true,
+      lowercase: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -54,8 +54,8 @@ export const UsersSchema = new mongoose.Schema(
     otp: {
       type: Number,
     },
-    playerId:{
-      type:String
+    playerId: {
+      type: String,
     },
     mobileNumberverified: {
       type: Boolean,
@@ -66,8 +66,8 @@ export const UsersSchema = new mongoose.Schema(
     verificationId: {
       type: String,
     },
-    filePath:{
-     type:String
+    filePath: {
+      type: String,
     },
     registrationDate: {
       type: Number,
@@ -98,23 +98,22 @@ export const UsersSchema = new mongoose.Schema(
     },
     status: {
       type: Boolean,
-      default:true
+      default: true,
     },
     // only for admin
     exportedFile: {
       type: Object,
     },
     //newly added field loyaltyPoint and totalLoyaltyPoints
-    loyaltyPoints:{
-      type:Array
+    loyaltyPoints: {
+      type: Array,
     },
     //current loyalty point
     totalLoyaltyPoints: {
-      type: Number
+      type: Number,
     },
-
   },
-  
+
   { timestamps: true },
 );
 
@@ -132,11 +131,11 @@ export class CoOridnatesDTO {
 //only These role should be created
 enum RoleType {
   User = 'User',
-  DileveryBoy= 'Delivery Boy',
-  Admin='Admin',
+  DileveryBoy = 'Delivery Boy',
+  Admin = 'Admin',
+  Student = 'Student',
   //Manager='Manager'
 }
-
 
 export class UsersDTO {
   @IsEmpty()
@@ -166,19 +165,20 @@ export class UsersDTO {
 
   @IsEmpty()
   salt: string;
-  
-  @IsOptional()
-  @ApiModelProperty()
-  filePath:string
 
   @IsOptional()
-  playerId:String
+  @ApiModelProperty()
+  filePath: string;
+
+  @IsOptional()
+  playerId: String;
 
   @IsNotEmpty()
-  @IsEnum(RoleType, {message: 'Role  type should be User or Admin or DeliveryBoy'})
+  @IsEnum(RoleType, {
+    message: 'Role  type should be User or Admin or DeliveryBoy',
+  })
   @ApiModelProperty()
   role: string;
-
 
   @IsOptional()
   otp: number;
@@ -213,14 +213,12 @@ export class UsersDTO {
   @IsOptional()
   @IsNumber()
   @IsPositive()
- 
   @ApiModelProperty()
   freeDeliveryDistance: number;
 
   @IsOptional()
   @IsNumber()
   @IsPositive()
-  
   @ApiModelProperty()
   deliveryCharge: number;
 
@@ -229,12 +227,12 @@ export class UsersDTO {
   deliveryDistanceUnit: string;
 
   fcmToken: string;
-  status:boolean
+  status: boolean;
   @IsOptional()
   @ApiModelProperty()
-  loyaltyPoints:Array<any>= []
+  loyaltyPoints: Array<any> = [];
   @ApiModelProperty()
-  totalLoyaltyPoints:number;
+  totalLoyaltyPoints: number;
 }
 
 export class UsersUpdateDTO {
@@ -254,7 +252,6 @@ export class UsersUpdateDTO {
   @ApiModelProperty()
   mobileNumber: string;
 
-
   @IsOptional()
   otp: number;
 
@@ -269,7 +266,7 @@ export class UsersUpdateDTO {
 
   @IsOptional()
   @ApiModelProperty()
-  filePath:string
+  filePath: string;
 
   @IsOptional()
   registrationDate: number;
@@ -313,12 +310,11 @@ export class UsersUpdateDTO {
   @IsOptional()
   @ApiModelProperty()
   fcmToken: string;
- 
+
   @IsOptional()
   @ApiModelProperty()
-  playerId:string
-  status:boolean
- 
+  playerId: string;
+  status: boolean;
 }
 
 export class CredentialsDTO {
@@ -326,9 +322,9 @@ export class CredentialsDTO {
   @IsEmail()
   @ApiModelProperty()
   email: string;
-  
+
   @IsOptional()
-  playerId:string
+  playerId: string;
 
   @IsNotEmpty()
   @ApiModelProperty()
@@ -337,9 +333,9 @@ export class CredentialsDTO {
 // mobile No. login credentails
 export class CredentialsMobileDTO {
   @IsNotEmpty()
-  @Length(0,15)
+  @Length(0, 15)
   @ApiModelProperty()
-  mobileNumber:number
+  mobileNumber: number;
 
   @IsNotEmpty()
   @ApiModelProperty()
@@ -351,18 +347,18 @@ export class UploadFileDTO {
 }
 
 export class DeleteFileDTO {
-  fileId:string;
+  fileId: string;
   @IsNotEmpty()
   @IsString()
   @ApiModelProperty()
   key: string;
 }
 //delete imgeKit uploded file
-export class ImageKitdDeleteDTO{
+export class ImageKitdDeleteDTO {
   @IsNotEmpty()
   @IsString()
   @ApiModelProperty()
-  fileId:string
+  fileId: string;
 }
 export class VerifyEmailDTO {
   @IsNotEmpty()
@@ -407,30 +403,29 @@ export class DeviceTokenDTO {
 
 export class MobileDTO {
   @IsNotEmpty()
-  @Length(0,15)
+  @Length(0, 15)
   @ApiModelProperty()
   mobileNumber: string;
 }
 
 //deliveryBoy status update model
-export class DeliverBoyStatusDTO{
+export class DeliverBoyStatusDTO {
   @IsNotEmpty()
   @ApiModelProperty()
-  status:boolean
+  status: boolean;
 }
 
 //only for admin
-export class ExportedFileDTO{
+export class ExportedFileDTO {
   @ApiModelProperty()
-  exportedFile:object
+  exportedFile: object;
 }
-export class PushNotificationDTO{
+export class PushNotificationDTO {
   @ApiModelProperty()
   @IsNotEmpty()
-  title:string
+  title: string;
   @ApiModelProperty()
   @IsNotEmpty()
-  mssg:String;
-  couponecode:string
-  
+  mssg: String;
+  couponecode: string;
 }

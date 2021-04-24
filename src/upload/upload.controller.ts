@@ -5,7 +5,7 @@ import {AuthGuard} from '@nestjs/passport';
 import {UploadService} from './upload.service';
 import {DeleteFileDTO, UploadFileDTO, ImageKitdDeleteDTO} from '../users/users.model';
 import {CommonResponseModel} from '../utils/app-service-data';
-import {LocationDTO} from '../address/address.model';
+
 
 @Controller('utils')
 // @UseGuards(AuthGuard('jwt'))
