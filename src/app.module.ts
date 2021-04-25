@@ -21,6 +21,8 @@ import { CommentsModule } from './comments/comments.module';
 import { PaymentModule } from './payment/payment.module';
 import { ChannelModule } from './channel/channel.module';
 import { CatogeryModule } from './catogery/catogery.module';
+import { CompetitionModule } from './competition/competition.module';
+import { ParticipationModule } from './participation/participation.module';
 
 @Global()
 @Module({
@@ -59,6 +61,8 @@ import { CatogeryModule } from './catogery/catogery.module';
     PaymentModule,
     ChannelModule,
     CatogeryModule,
+    CompetitionModule,
+    ParticipationModule,
   ],
   controllers: [],
   providers: [AppGateway],
