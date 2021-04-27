@@ -747,4 +747,56 @@ export class UploadService {
     const response = await sgMail.send(msg);
     return response;
   }
+  public async sentcompetitionresultMail(competition) {
+    var myMessage = {
+      name: competition.name,
+      starting_data: competition.starting_data,
+      // ending_date: competition.ending_date,
+      first_prize: competition.first_prize,
+      second_prize: competition.second_prize,
+      third_prize: competition.third_prize,
+    };
+    let templatePath = `${
+      appRoot.path
+    }/components/competitionresult_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
+  public async sentannouncementMail (competition) {
+    var myMessage = {
+      name: competition.name,
+      starting_data: competition.starting_data,
+      // ending_date: competition.ending_date,
+      first_prize: competition.first_prize,
+      second_prize: competition.second_prize,
+      third_prize: competition.third_prize,
+    };
+    let templatePath = `${
+      appRoot.path
+    }/components/announcement_invoice.ejs`;
+    let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
+    let html_body = await ejs.render(templateHtml, myMessage);
+
+    const msg = {
+      to: 'ayushtyagi@gmail.com',
+      from: process.env.SendGrid_from,
+      subject: 'New Channel Created',
+      text: 'New Channel Done',
+      html: html_body,
+    };
+
+    const response = await sgMail.send(msg);
+    return response;
+  }
 }

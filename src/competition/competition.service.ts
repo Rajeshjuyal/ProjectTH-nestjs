@@ -18,6 +18,9 @@ export class CompetitionService {
     this.sendcompetitionregisterMail(competition);
     this.sendcompetitioncreatedMail(competition);
     this.sendonlinecompetitionMail(competition);
+    this.sendcompetitionresultMail(competition);
+    this.sendannouncementMail(competition);
+
     return {
       response_code: HttpStatus.OK,
       response_data: competition,
@@ -77,6 +80,22 @@ export class CompetitionService {
     competition,
   ): Promise<CommonResponseModel> {
     let res = await this.utilsService.sentonlinecompetitionMail(competition);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sendcompetitionresultMail(
+    competition,
+  ): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentcompetitionresultMail(competition);
+    return {
+      response_code: HttpStatus.OK,
+      response_data: res,
+    };
+  }
+  public async sendannouncementMail(competition): Promise<CommonResponseModel> {
+    let res = await this.utilsService.sentannouncementMail(competition);
     return {
       response_code: HttpStatus.OK,
       response_data: res,

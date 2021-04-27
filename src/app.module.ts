@@ -23,6 +23,7 @@ import { ChannelModule } from './channel/channel.module';
 import { CatogeryModule } from './catogery/catogery.module';
 import { CompetitionModule } from './competition/competition.module';
 import { ParticipationModule } from './participation/participation.module';
+import { PolicesModule } from './polices/polices.module';
 
 @Global()
 @Module({
@@ -63,6 +64,7 @@ import { ParticipationModule } from './participation/participation.module';
     CatogeryModule,
     CompetitionModule,
     ParticipationModule,
+    PolicesModule,
   ],
   controllers: [],
   providers: [AppGateway],
