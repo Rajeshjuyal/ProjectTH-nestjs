@@ -27,6 +27,17 @@ export class CourseController {
   findusers(@Body() id: string) {
     return this.courseService.finduser(id);
   }
+  @Post('upload/')
+  upload(@Body() coursedata: course[]) {
+    console.log(coursedata);
+    return this.courseService.upload(coursedata);
+  }
+
+  @Post('uploadExcel/')
+  uploadExcel(@Body() coursedata: any) {
+    console.log(coursedata);
+    return this.courseService.uploadExcel(coursedata);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

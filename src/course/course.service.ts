@@ -6,6 +6,7 @@ import { Model } from 'mongoose';
 import { CommonResponseModel } from '../utils/app-service-data';
 import { UploadService } from '../upload/upload.service';
 import { BusinessDTO } from '../business/business.model';
+import { response } from 'express';
 
 @Injectable()
 export class CourseService {
@@ -44,6 +45,27 @@ export class CourseService {
     return {
       response_code: HttpStatus.OK,
       response_data: purchase,
+    };
+  }
+  public async upload(courses: course[]) {
+    var course = await this.courseModel.insertMany(courses);
+    console.log(course);
+    return {
+      response_code: {
+        response_code: HttpStatus.OK,
+        response_data: course,
+      },
+    };
+  }
+
+  public async uploadExcel(course: any) {
+    var chapters = await this.utilsService.importExcelData2MongoDB(course);
+    var chapter = await this.courseModel.insertMany(chapters);
+    console.log(course);
+
+    return {
+      response_code: HttpStatus.OK,
+      response_data: course,
     };
   }
 

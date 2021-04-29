@@ -3,6 +3,7 @@ import * as AWS from 'aws-sdk';
 import { CommonResponseModel, globalConfig } from '../utils/app-service-data';
 import * as uuid from 'uuid/v1';
 import * as mailer from 'nodemailer';
+import * as excelToJson from 'convert-excel-to-json';
 import { NotificationsModel } from '../notifications/notifications.model';
 const NodeGeocoder = require('node-geocoder');
 const geocoder = NodeGeocoder(globalConfig.geoCoderOption);
@@ -773,7 +774,7 @@ export class UploadService {
     const response = await sgMail.send(msg);
     return response;
   }
-  public async sentannouncementMail (competition) {
+  public async sentannouncementMail(competition) {
     var myMessage = {
       name: competition.name,
       starting_data: competition.starting_data,
@@ -782,9 +783,7 @@ export class UploadService {
       second_prize: competition.second_prize,
       third_prize: competition.third_prize,
     };
-    let templatePath = `${
-      appRoot.path
-    }/components/announcement_invoice.ejs`;
+    let templatePath = `${appRoot.path}/components/announcement_invoice.ejs`;
     let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
     let html_body = await ejs.render(templateHtml, myMessage);
 
@@ -798,5 +797,34 @@ export class UploadService {
 
     const response = await sgMail.send(msg);
     return response;
+  }
+  public async importExcelData2MongoDB(filePath) {
+    // -> Read Excel File to Json Data
+    const excelData = excelToJson({
+      sourceFile: filePath,
+      sheets: [
+        {
+          // Excel Sheet Name
+          name: 'course',
+
+          // Header Row -> be skipped and will not be present at our result object.
+          header: {
+            rows: 1,
+          },
+
+          // Mapping columns to keys
+          columnToKey: {
+            A: '_id',
+            B: 'admin',
+            C: 'subject',
+            D: 'class',
+            E: 'name',
+            F: 'board',
+          },
+        },
+      ],
+    });
+    console.log(excelData);
+    return excelData;
   }
 }

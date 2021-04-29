@@ -53,6 +53,7 @@
     "braintree": "^2.19.0",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
+    "convert-excel-to-json": "^1.7.0",
     "cron": "^1.8.2",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.2",
