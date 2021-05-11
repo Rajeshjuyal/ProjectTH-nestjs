@@ -379,7 +379,7 @@ export class UploadService {
     let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
     let html_body = await ejs.render(templateHtml, myMessage);
     const msg = {
-      to: 'mailtoayushtyagi@gmail.com',
+      to: 'juyalrajesh36@gmail.com',
       from: process.env.SendGrid_from,
       subject: 'New Course Created',
       text: 'New course details',
@@ -443,7 +443,7 @@ export class UploadService {
     let templateHtml = await fs.readFileSync(templatePath, 'utf-8');
     let html_body = await ejs.render(templateHtml, myMessage);
     const msg = {
-      to: 'dhasmanadhasmana12@gmail.com',
+      to: 'juyalrajesh36@gmail.com',
       from: process.env.SendGrid_from,
       subject: 'New Seminar Created',
       text: 'New Seminar details',
